@@ -36,11 +36,17 @@ try {
 if (
   typeof data !== 'object' ||
   data === null ||
-  typeof (data as { url?: unknown }).url !== 'string'
+  typeof (data as { url?: unknown }).url !== 'string' ||
+  (data as { url: string }).url.trim() === '' ||
+  !(data as { url: string }).url.startsWith('https://')
 ) {
-  console.error('POST.json must be a JSON object with a url string field');
+  console.error('POST.json must be a JSON object with a non-empty https url string field');
   process.exit(1);
 }
+
+// Note: the placeholder url below still passes this local check, because
+// it is shaped like a real post address. The house gate refuses it as it
+// stands, so replace it with the real post address before submitting.
 
 mkdirSync(OUTPUT_DIR, { recursive: true });
 try {
