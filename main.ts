@@ -46,7 +46,8 @@ if (
 
 // Note: the placeholder url below still passes this local check, because
 // it is shaped like a real post address. The house gate refuses it as it
-// stands, so replace it with the real post address before submitting.
+// stands, so replace it with the real post address, after Monch posts the
+// meme from his own account, before submitting.
 
 mkdirSync(OUTPUT_DIR, { recursive: true });
 try {
